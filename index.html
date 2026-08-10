@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubham — CS Student </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EE;
+    --paper-line:#E4DFD3;
+    --ink:#1E2A3A;
+    --ink-soft:#5B6B7A;
+    --teal:#2F6F62;
+    --teal-soft:#EAF2F0;
+    --gold:#C9A227;
+    --coral:#E8623D;
+    --max:760px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px);
+    background-size: 100% 42px;
+  }
+  a{ color:var(--teal); text-decoration:none; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+  /* ---- Header: sticky nav + achievement ticker ---- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--ink);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:var(--max); margin:0 auto; padding:18px 24px;
+  }
+  .brand{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px; letter-spacing:.06em;
+    border:1px solid var(--ink); padding:4px 10px;
+  }
+  .nav-links{ display:flex; gap:28px; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--ink);
+  }
+  .nav-links a:hover{ color:var(--teal); }
+  .burger{
+    display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;
+  }
+  .burger span{ width:22px; height:2px; background:var(--ink); display:block; }
+
+  .ticker-bar{
+    border-top:1px dashed var(--ink-soft);
+    background:var(--teal-soft);
+    overflow:hidden;
+    position:relative;
+    padding:9px 0;
+  }
+  .ticker-track{
+    display:flex; width:max-content;
+    animation: scroll-left 32s linear infinite;
+  }
+  .ticker-bar:hover .ticker-track{ animation-play-state:paused; }
+  .ticker-item{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:.04em;
+    color:var(--ink);
+    white-space:nowrap;
+    padding:0 22px;
+    display:flex; align-items:center; gap:22px;
+  }
+  .ticker-item::after{
+    content:"○"; color:var(--gold); font-size:9px; margin-left:22px;
+  }
+  @keyframes scroll-left{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker-track{ animation:none; overflow-x:auto; }
+  }
+
+  /* ---- Hero ---- */
+  .hero{ padding:64px 24px 40px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--teal); margin-bottom:14px;
+  }
+  h1{
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:clamp(42px, 8vw, 68px);
+    margin:0 0 18px; line-height:1.02;
+  }
+  .meta-grid{
+    display:grid; grid-template-columns:repeat(3,auto); gap:28px;
+    margin:28px 0 34px; padding:20px 0;
+    border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);
+  }
+  .meta-item .label{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft); margin-bottom:4px;
+  }
+  .meta-item .value{ font-size:15px; font-weight:500; }
+  .status-dot{
+    display:inline-block; width:7px; height:7px; border-radius:50%;
+    background:var(--gold); margin-right:6px;
+  }
+  .cta-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:.04em;
+    padding:13px 24px; border:1px solid var(--ink); cursor:pointer;
+    display:inline-block;
+  }
+  .btn-solid{ background:var(--ink); color:var(--paper); }
+  .btn-solid:hover{ background:var(--teal); border-color:var(--teal); color:#fff; }
+  .btn-outline{ background:transparent; color:var(--ink); }
+  .btn-outline:hover{ border-color:var(--teal); color:var(--teal); }
+
+  /* ---- Sections ---- */
+  section{ padding:52px 24px; border-top:1px solid var(--paper-line); }
+  .section-inner{ max-width:var(--max); margin:0 auto; }
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:28px; }
+  .section-num{ font-family:'IBM Plex Mono', monospace; color:var(--teal); font-size:13px; }
+  h2{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:28px; margin:0;
+  }
+
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:12px;
+  }
+  .skill-chip{
+    border:1px solid var(--ink); padding:12px 14px;
+    font-size:14px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .skill-chip .tick{ color:var(--gold); font-family:'IBM Plex Mono', monospace; font-size:12px; }
+
+  .ach-empty{
+    border:1px dashed var(--ink-soft); padding:28px; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-soft);
+  }
+  .ach-list{ list-style:none; margin:0; padding:0; }
+  .ach-list li{
+    display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--paper-line);
+    font-size:15px;
+  }
+  .ach-list li .date{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--teal); min-width:70px;
+  }
+
+  .edu-card{ border-left:3px solid var(--teal); padding-left:20px; }
+  .edu-card .role{ font-family:'Fraunces', serif; font-weight:600; font-size:19px; margin-bottom:4px; }
+  .edu-card .org{ color:var(--ink-soft); font-size:14px; margin-bottom:8px; }
+  .edu-card .note{ font-size:14.5px; }
+  .edu-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.06em;
+    text-transform:uppercase; background:var(--teal-soft); color:var(--teal);
+    padding:3px 8px; display:inline-block; margin-top:10px;
+  }
+
+  .about-text{ font-size:16.5px; max-width:640px; }
+
+  .contact-grid{ display:grid; gap:14px; }
+  .contact-row{
+    display:flex; justify-content:space-between; align-items:center;
+    border:1px solid var(--ink); padding:16px 18px;
+  }
+  .contact-row .label{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em; }
+  .contact-row .value{ font-size:15px; font-weight:500; }
+
+  footer{
+    padding:28px 24px; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft);
+    border-top:1px solid var(--ink);
+  }
+
+  /* ---- Mobile ---- */
+  @media (max-width:720px){
+    .meta-grid{ grid-template-columns:1fr; gap:16px; }
+    .nav-links{
+      position:fixed; top:0; right:0; height:100vh; width:min(78vw,300px);
+      background:var(--paper); border-left:1px solid var(--ink);
+      flex-direction:column; gap:0; padding:80px 28px 28px;
+      transform:translateX(100%); transition:transform .28s ease;
+    }
+    .nav-links.open{ transform:translateX(0); }
+    .nav-links li{ border-bottom:1px solid var(--paper-line); }
+    .nav-links a{ display:block; padding:16px 0; }
+    .burger{ display:flex; z-index:60; }
+    .burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2){ opacity:0; }
+    .burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+    .overlay{
+      display:none; position:fixed; inset:0; background:rgba(30,42,58,.35); z-index:55;
+    }
+    .overlay.show{ display:block; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">SHUBHAM</div>
+    <button class="burger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeNav()">About</a></li>
+      <li><a href="#education" onclick="closeNav()">Education</a></li>
+      <li><a href="#skills" onclick="closeNav()">Skills</a></li>
+      <li><a href="#achievements" onclick="closeNav()">Achievements</a></li>
+      <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="ticker-bar" id="tickerBar"></div>
+</header>
+<div class="overlay" id="overlay" onclick="closeNav()"></div>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">// build log — status: active</div>
+      <h1>Shubham</h1>
+      <div class="meta-grid">
+        <div class="meta-item">
+          <div class="label">Location</div>
+          <div class="value">Basti, Uttar Pradesh</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Focus</div>
+          <div class="value">Computer Science</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Status</div>
+          <div class="value"><span class="status-dot"></span>Open to work</div>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a href="#skills" class="btn btn-solid">View Work</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-head"><span class="section-num">01</span><h2>Skills</h2></div>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="section-inner">
+      <div class="section-head"><span class="section-num">02</span><h2>Achievements</h2></div>
+      <div id="achievementsBox"></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-inner">
+      <div class="section-head"><span class="section-num">03</span><h2>Education</h2></div>
+      <div class="edu-card">
+        <div class="role">BSc Computer Science</div>
+        
+        <div class="note">Currently in third semester, with a strong self-directed study approach — working through core CS theory (Operating Systems, Networks, DBMS, Data Structures) independently alongside coursework.</div>
+        <span class="edu-tag">In progress</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-head"><span class="section-num">04</span><h2>About</h2></div>
+      <p class="about-text">I'm a Computer Science student based in Basti, Uttar Pradesh, currently in my third semester and mostly teaching myself the subject outside the classroom. Alongside my degree, I take on freelance work — building websites and editing video content. I'm also slowly exploring a longer-term interest in interior design, where I think a CS background could carry over well into CAD and 3D visualization tools. When I'm not working, I'm usually reading about old Hindi cinema or classic literature.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-head"><span class="section-num">05</span><h2>Contact</h2></div>
+      <div class="contact-grid">
+        <div class="contact-row">
+          <span class="label">Email</span>
+          <a class="value" href="mailto:shubhamyadav6174@gmail.com">shubhamyadav6174@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">Instagram</span>
+          <a class="value" href="https://instagram.com/Shubhamydv13" target="_blank" rel="noopener">@Shubhamydv13</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Built by Shubham — updated August 2026
+</footer>
+
+<script>
+  // ---- DATA: edit these arrays to update site content ----
+  const SKILLS = [
+    "HTML / CSS / JavaScript",
+    "Freelance Web Development",
+    "Video Editing",
+    "Python",
+    "SQL & DBMS",
+    "Operating Systems Fundamentals",
+    "Learning: CAD & 3D Visualization"
+  ];
+
+  const ACHIEVEMENTS = [
+    // Add entries like: { date: "Aug 2026", text: "Launched personal portfolio site" },
+  ];
+
+  // ---- Render skills ----
+  const skillsGrid = document.getElementById('skillsGrid');
+  SKILLS.forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'skill-chip';
+    div.innerHTML = `<span>${s}</span><span class="tick">·</span>`;
+    skillsGrid.appendChild(div);
+  });
+
+  // ---- Render achievements section ----
+  const achBox = document.getElementById('achievementsBox');
+  if (ACHIEVEMENTS.length === 0) {
+    achBox.innerHTML = `<div class="ach-empty">Nothing logged yet — this space fills up as milestones happen.</div>`;
+  } else {
+    const ul = document.createElement('ul');
+    ul.className = 'ach-list';
+    ACHIEVEMENTS.forEach(a => {
+      const li = document.createElement('li');
+      li.innerHTML = `<span class="date">${a.date}</span><span>${a.text}</span>`;
+      ul.appendChild(li);
+    });
+    achBox.appendChild(ul);
+  }
+
+  // ---- Render ticker (uses achievements, falls back to a status line) ----
+  const tickerBar = document.getElementById('tickerBar');
+  const tickerItems = ACHIEVEMENTS.length
+    ? ACHIEVEMENTS.map(a => `${a.date} — ${a.text}`)
+    : ["Shubham Yadav", "Open to freelance web ", "More milestones coming soon"];
+
+  const track = document.createElement('div');
+  track.className = 'ticker-track';
+  // duplicate list twice for seamless loop
+  [...tickerItems, ...tickerItems].forEach(t => {
+    const span = document.createElement('span');
+    span.className = 'ticker-item';
+    span.textContent = t;
+    track.appendChild(span);
+  });
+  tickerBar.appendChild(track);
+
+  // ---- Mobile nav ----
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  const overlay = document.getElementById('overlay');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+    overlay.classList.toggle('show');
+  });
+  function closeNav(){
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+    overlay.classList.remove('show');
+  }
+</script>
+
+</body>
+</html>
