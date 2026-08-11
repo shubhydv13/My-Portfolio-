@@ -1,1 +1,223 @@
-<h1>MY ACHIEVEMENT AND CERTIFICATIONS WILL BE SHOWN HERE </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achievements — Shubham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EE;
+    --paper-line:#E4DFD3;
+    --ink:#1E2A3A;
+    --ink-soft:#5B6B7A;
+    --teal:#2F6F62;
+    --teal-soft:#EAF2F0;
+    --gold:#C9A227;
+    --coral:#E8623D;
+    --max:760px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif; font-size:16px; line-height:1.6;
+    background-image: linear-gradient(var(--paper-line) 1px, transparent 1px);
+    background-size: 100% 42px;
+  }
+  a{ color:var(--teal); text-decoration:none; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 24px; }
+
+  header{
+    position:sticky; top:0; z-index:50; background:var(--paper);
+    border-bottom:1px solid var(--ink);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:var(--max); margin:0 auto; padding:18px 24px;
+  }
+  .back-link{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--ink); display:flex; align-items:center; gap:8px;
+  }
+  .back-link:hover{ color:var(--teal); }
+  .brand{
+    font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:.06em;
+    border:1px solid var(--ink); padding:4px 10px;
+  }
+
+  .hero{ padding:56px 24px 20px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--teal); margin-bottom:14px;
+  }
+  h1{
+    font-family:'Fraunces', serif; font-weight:600; font-style:italic;
+    color:var(--coral); font-size:clamp(38px, 7vw, 56px);
+    margin:0 0 10px; line-height:1.02;
+  }
+  .sub{ color:var(--ink-soft); font-size:15px; max-width:520px; }
+
+  section{ padding:20px 24px 64px; }
+  .section-inner{ max-width:var(--max); margin:0 auto; }
+  h2{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:24px; margin:0 0 8px;
+  }
+  .section-line{ border-bottom:1px solid var(--ink); margin-bottom:36px; }
+
+  /* ---- Certificate timeline ---- */
+  .timeline{ position:relative; }
+  .timeline::before{
+    content:""; position:absolute; left:15px; top:10px; bottom:10px;
+    border-left:2px dashed var(--paper-line);
+  }
+  .cert-card{ position:relative; padding-left:48px; margin-bottom:52px; }
+  .cert-card:last-child{ margin-bottom:0; }
+  .cert-dot{
+    position:absolute; left:8px; top:6px; width:16px; height:16px;
+    border-radius:50%; background:var(--paper); border:2px solid var(--teal);
+  }
+  .cert-label{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px;
+  }
+  .cert-title{
+    font-family:'Fraunces', serif; font-weight:600; font-size:19px; margin-bottom:6px;
+  }
+  .cert-desc{ font-size:14.5px; color:var(--ink-soft); margin-bottom:16px; max-width:520px; }
+
+  .cert-frame{
+    border:1px solid var(--ink); background:#fff; padding:8px;
+    max-width:480px;
+  }
+  .cert-frame img{ display:block; width:100%; height:auto; }
+  .cert-placeholder{
+    aspect-ratio:4/3; border:1px dashed var(--ink-soft);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-soft);
+    text-align:center; padding:20px;
+  }
+  .cert-pdf-link{
+    display:inline-block; margin-top:10px;
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    border:1px solid var(--ink); padding:8px 14px;
+  }
+  .cert-pdf-link:hover{ background:var(--ink); color:var(--paper); }
+
+  /* ---- Badge slider ---- */
+  .badge-strip{
+    display:flex; gap:8px; overflow-x:auto; padding:12px 2px 10px;
+    max-width:480px; scrollbar-width:thin; scrollbar-color:var(--teal) var(--paper-line);
+  }
+  .badge-strip::-webkit-scrollbar{ height:6px; }
+  .badge-strip::-webkit-scrollbar-track{ background:var(--paper-line); }
+  .badge-strip::-webkit-scrollbar-thumb{ background:var(--teal); border-radius:3px; }
+  .badge{
+    flex:0 0 auto; font-family:'IBM Plex Mono', monospace; font-size:11.5px;
+    letter-spacing:.03em; text-transform:uppercase; white-space:nowrap;
+    background:var(--teal-soft); color:var(--teal); padding:6px 12px; border-radius:2px;
+  }
+  .scroll-hint{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  footer{
+    padding:28px 24px; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft);
+    border-top:1px solid var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="back-link" href="shubham-portfolio.html">&larr; Back to Portfolio</a>
+    <div class="brand">ACHIEVEMENTS</div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="eyebrow">// full record</div>
+      <h1>My Achievements</h1>
+      <p class="sub">Certificates and milestones, logged as they happen. Scroll the badge strip under each certificate to see related skills.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-inner">
+      <h2>Certificates</h2>
+      <div class="section-line"></div>
+      <div class="timeline" id="certTimeline"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Built by Shubham — updated August 2026
+</footer>
+
+<script>
+  // ---- DATA: add / edit your certificates here ----
+  // type: "image" -> put file in a "certs" folder next to this html, set image path
+  // type: "pdf"   -> set file path to the pdf, a "View Certificate" link will show instead
+  const CERTIFICATES = [
+    {
+      label: "Certificate 01",
+      title: "Add your certificate title",
+      description: "Write a short line about what this certificate is for, who issued it, and when.",
+      type: "image",          // "image" or "pdf"
+      file: "",                // e.g. "certs/python-basics.jpg" or "certs/python-basics.pdf"
+      badges: ["Python", "Programming", "2026"]
+    },
+    {
+      label: "Certificate 02",
+      title: "Add your certificate title",
+      description: "Write a short line about what this certificate is for, who issued it, and when.",
+      type: "image",
+      file: "",
+      badges: ["Web Development", "HTML", "CSS"]
+    }
+  ];
+
+  const timeline = document.getElementById('certTimeline');
+
+  CERTIFICATES.forEach(cert => {
+    const card = document.createElement('div');
+    card.className = 'cert-card';
+
+    let mediaHTML = '';
+    if (cert.file && cert.type === 'image') {
+      mediaHTML = `<div class="cert-frame"><img src="${cert.file}" alt="${cert.title}"></div>`;
+    } else if (cert.file && cert.type === 'pdf') {
+      mediaHTML = `
+        <div class="cert-placeholder">PDF certificate</div>
+        <a class="cert-pdf-link" href="${cert.file}" target="_blank" rel="noopener">View Certificate (PDF) &rarr;</a>`;
+    } else {
+      mediaHTML = `<div class="cert-placeholder">Add your certificate file path in the CERTIFICATES array</div>`;
+    }
+
+    const badgesHTML = cert.badges.map(b => `<span class="badge">${b}</span>`).join('');
+
+    card.innerHTML = `
+      <div class="cert-dot"></div>
+      <div class="cert-label">${cert.label}</div>
+      <div class="cert-title">${cert.title}</div>
+      <div class="cert-desc">${cert.description}</div>
+      ${mediaHTML}
+      <div class="badge-strip">${badgesHTML}</div>
+      <div class="scroll-hint">&larr; slide to see more &rarr;</div>
+    `;
+    timeline.appendChild(card);
+  });
+</script>
+
+</body>
+  </html>
+  
