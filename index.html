@@ -339,7 +339,8 @@
   // ---- Render achievements section ----
   const achBox = document.getElementById('achievementsBox');
   if (ACHIEVEMENTS.length === 0) {
-    achBox.innerHTML = `<div class="ach-empty"> <a href = "achievement.html> Click here to see </a></div>`;
+    achBox.innerHTML = `<div class="ach-empty"><a href="achievement.html">View Achievements</a></div>`;
+
   } else {
     const ul = document.createElement('ul');
     ul.className = 'ach-list';
